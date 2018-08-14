@@ -19,8 +19,6 @@ private:
     Sprite* background;
     Actor* knight;
 
-    int index = 1;
-
     Uint32 lastTick = 0;
     Uint32 tick = 0;
 

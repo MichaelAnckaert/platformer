@@ -69,7 +69,25 @@ void CApp::OnEvent(SDL_Event* event) {
         case SDLK_ESCAPE:
             running = false;
             break;
+        case SDLK_LEFT:
+            knight->movingLeft = true;
+            break;
+        case SDLK_RIGHT:
+            knight->movingRight = true;
+            break;
+        case SDLK_SPACE:
+            knight->Jump();
+            break;
         default:
+            break;
+        }
+    } else if (event->type == SDL_KEYUP) {
+        switch (event->key.keysym.sym) {
+        case SDLK_LEFT:
+            knight->movingLeft = false;
+            break;
+        case SDLK_RIGHT:
+            knight->movingRight = false;
             break;
         }
     }

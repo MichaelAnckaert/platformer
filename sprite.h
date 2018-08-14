@@ -9,12 +9,14 @@
 class Sprite
 {
 public:
-    Sprite(SDL_Renderer* renderer, std::string spritePath);
+    Sprite(SDL_Renderer* renderer, std::string spritePath, int x=0, int y=0, int w=0, int h=0);
     void Render();
 
 protected:
     SDL_Renderer* renderer;
     SDL_Texture* sprite;
+
+    int x, y, w, h;
 
 private:
     SDL_Texture* LoadTexture(std::string path);

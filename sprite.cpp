@@ -1,8 +1,12 @@
 #include "sprite.h"
 
-Sprite::Sprite(SDL_Renderer* renderer, std::string spritePath) {
+Sprite::Sprite(SDL_Renderer* renderer, std::string spritePath, int x, int y, int w, int h) {
     this->renderer = renderer;
     sprite = LoadTexture(spritePath);
+    this->x = x;
+    this->y = y;
+    this->w = w;
+    this->h = h;
 }
 
 SDL_Texture* Sprite::LoadTexture(std::string path) {
@@ -24,5 +28,9 @@ SDL_Texture* Sprite::LoadTexture(std::string path) {
 
 
 void Sprite::Render() {
-    SDL_RenderCopy(renderer, sprite, nullptr, nullptr);
+    SDL_Rect* dstRect = nullptr;
+    if (x || y || w || h) {
+        dstRect = new SDL_Rect{x, y, w, h};
+    }
+    SDL_RenderCopy(renderer, sprite, nullptr, dstRect);
 }

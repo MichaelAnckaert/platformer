@@ -57,6 +57,11 @@ bool CApp::OnInit() {
     background = new Sprite(renderer, "background.png");
     knight = new Actor(renderer, "knight.png");
 
+    map = new std::vector<Sprite*>();
+    for(int i = 0; i <= 20; i++) {
+        map->push_back(new Sprite(renderer, "brick.png", 50*i, 600, 50, 50));
+    }
+
     return true;
 }
 
@@ -103,6 +108,9 @@ void CApp::OnRender() {
 
         background->Render();
         knight->Render();
+
+        for (Sprite* sprite : *map)
+            sprite->Render();
 
         SDL_RenderPresent(renderer);
     }

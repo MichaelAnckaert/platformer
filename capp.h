@@ -5,6 +5,7 @@
 #include<SDL2/SDL_image.h>
 
 #include <iostream>
+#include <vector>
 
 #include "sprite.h"
 #include "actor.h"
@@ -18,6 +19,8 @@ private:
 
     Sprite* background;
     Actor* knight;
+
+    std::vector<Sprite*>* map;
 
     Uint32 lastTick = 0;
     Uint32 tick = 0;

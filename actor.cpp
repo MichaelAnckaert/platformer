@@ -4,7 +4,8 @@
 #define JUMPPOWER 160
 #define MOVE 20
 
-Actor::Actor(SDL_Renderer* renderer, const std::string spritePath): Sprite(renderer, spritePath) {
+Actor::Actor(SDL_Renderer* renderer, const std::string spritePath, std::vector<Sprite*>* map): Sprite(renderer, spritePath) {
+    this->map = map;
 }
 
 void Actor::Render() {
@@ -41,4 +42,9 @@ void Actor::Render() {
 void Actor::Jump() {
     if (y == 0)
         jumpPower += JUMPPOWER;
+}
+
+
+bool Actor::CanFall() {
+
 }

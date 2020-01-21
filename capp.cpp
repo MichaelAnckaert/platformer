@@ -54,13 +54,13 @@ bool CApp::OnInit() {
 
     display = SDL_GetWindowSurface(window);
 
-    background = new Sprite(renderer, "background.png");
-    knight = new Actor(renderer, "knight.png");
-
     map = new std::vector<Sprite*>();
     for(int i = 0; i <= 20; i++) {
         map->push_back(new Sprite(renderer, "brick.png", 50*i, 600, 50, 50));
     }
+
+    background = new Sprite(renderer, "background.png");
+    knight = new Actor(renderer, "knight.png", map);
 
     return true;
 }
@@ -104,7 +104,7 @@ void CApp::OnRender() {
         lastTick = tick;
 
         //Clear screen
-        SDL_RenderClear( renderer );
+        //SDL_RenderClear( renderer );  We don't need to clear the screen?
 
         background->Render();
         knight->Render();
